@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Pet Match</title>
+<script src="jquery-1.11.3.min.js"></script>
+
+<script language="javascript">
+
+$(document).ready(function(){
+	$('.skey').click(function(){
+		$('#' + $("#selval").val()).css("background-color", "#FFFFFF")
+		$(this).css("background-color","#9C9C9C");
+		$("#selval").val(this.id);
+	});
+	$('.svalue').click(function(){
+		if("pet" + $("#selval").val() == this.id){
+			$('#' + $("#selval").val()).css("background-color","#00FF04");
+			$(this).css("background-color","#00FF04");
+			$('#' + $("#selval").val()).off('click').addClass('.deactivated');
+			$('#pet' + $("#selval").val()).off('click').addClass('.deactivated');
+			$("#selval").val(-1);
+		}else{			
+			$(this).css("background-color","#FF0000").delay(700).queue(
+				function() {
+            		$(this).css("background-color", "#FFFFFF").dequeue();
+            		$('#' + $("#selval").val()).css("background-color", "#FFFFFF").dequeue();
+            	});
+		}
+	});
+
+});
+</script>
+
+</head>
+
+<body>
+<div align="center">
+<table style="width: 320pt">
+	<tr>
+		<td style="width: 130pt;height:130pt">&nbsp;</td>
+		<td style="width: 60pt">&nbsp;</td>
+		<td style="width: 130pt;height:130pt">&nbsp;</td>
+	</tr>
+	<tr>
+		<td><div align="center" id="1" class="skey" style="width: 130pt;height:130pt" valign="middle">
+			<br />
+			<img src="people.png" /></div></td>
+		<td>&nbsp;</td>
+		<td><div align="center" id="pet3"  class="svalue" style="width: 130pt;height:130pt" valign="middle">
+			<br />
+			<img src="pet.png" /></div></td>
+	</tr>
+	<tr>
+		<td><div align="center" id="2" class="skey" style="width: 130pt;height:130pt" valign="middle">
+			<br />
+			<img src="people2.png" /></div></td>
+		<td>&nbsp;</td>
+		<td><div align="center" id="pet2"  class="svalue" style="width: 130pt;height:130pt" valign="middle">
+			<br />
+			<img src="pet2.png" /></div></td>
+	</tr>
+	<tr>
+		<td><div align="center" id="3"  class="skey" style="width: 130pt;height:130pt" valign="middle">
+			<br />
+			<img src="people3.png" /></div></td>
+		<td>&nbsp;</td>
+		<td><div align="center" id="pet1"  class="svalue" style="width: 130pt;height:130pt" valign="middle">
+			<br />
+			<img src="pet3.png" /></div></td>
+	</tr>
+</table>
+<input type="hidden" id="selval" name="selval" value="0" />
+
+
+
+</div>
+</body>
+
+</html>
